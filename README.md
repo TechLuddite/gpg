@@ -105,6 +105,19 @@ Settings → Pages → Deploy from a branch → `main` → `/ (root)`. Nothing e
 needed: `.nojekyll` stops GitHub trying to process the files, and there is no
 build to run.
 
+**GitHub Pages does not serve private repositories on the Free plan.** Either
+make the repository public or move the account to Pro. Nothing in the code
+changes either way.
+
+The site is served from `/gpg/` rather than a domain root, so every path in
+every page is relative and none of them start with `/`. `test/site.test.js`
+enforces that, and the whole site has been driven in a browser under a
+subpath to prove it.
+
+`404.html` is deliberately self contained: Pages serves it for any missing
+path but leaves the address bar on the URL that was asked for, so a relative
+stylesheet link in it would 404 in turn and the page would arrive unstyled.
+
 ## What is deliberately missing
 
 - **Shared high score tables.** GitHub Pages serves static files and nothing

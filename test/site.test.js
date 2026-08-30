@@ -98,6 +98,32 @@ test('every page has a title, a viewport and a link back to the playground', () 
   }
 });
 
+test('nothing is linked from the site root, so the site works under /gpg/', () => {
+  // GitHub Pages serves a project site from a subpath, not the domain root.
+  // A leading slash on any href, src or import would 404 in production while
+  // working perfectly on a local server started at the repo root.
+  const files = [...htmlFiles(), '404.html'];
+  for (const file of files) {
+    const html = readFileSync(join(root, file), 'utf8');
+    const rooted = [...html.matchAll(/(?:href|src)="(\/[^\/][^"]*)"/g)].map((m) => m[1]);
+    assert.deepEqual(rooted, [], `${file} links ${rooted.join(', ')} from the domain root`);
+  }
+});
+
+test('the 404 page is self contained', () => {
+  // Pages serves this file for any missing path but leaves the address bar on
+  // the URL that was asked for, so every relative reference in it resolves
+  // against a directory that does not exist. It must load nothing.
+  const html = readFileSync(join(root, '404.html'), 'utf8');
+  assert.match(html, /<title>[^<]+<\/title>/);
+
+  const refs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)]
+    .map((m) => m[1])
+    .filter((ref) => !ref.startsWith('data:') && !ref.startsWith('#') && ref !== '/');
+  assert.deepEqual(refs, [], `404.html loads ${refs.join(', ')}, which will 404 in turn`);
+  assert.doesNotMatch(html, /<link rel="stylesheet"/, '404.html must inline its own styles');
+});
+
 test('.nojekyll is present so GitHub Pages serves the files as they are', () => {
   assert.ok(existsSync(join(root, '.nojekyll')));
 });

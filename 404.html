@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nothing here - Grace's Playground</title>
+<meta name="theme-color" content="#6c4cd6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%A0%3C/text%3E%3C/svg%3E">
+<style>
+  /* Everything this page needs is inline on purpose.
+     GitHub Pages serves 404.html for any missing path while leaving the address
+     bar on the URL that was asked for, so a relative <link> to the shared
+     stylesheet resolves against /gpg/games/typo/ and 404s in turn. A page whose
+     whole job is to handle a bad URL must not depend on a good one. */
+  :root {
+    color-scheme: light dark;
+    --ink: #241c33;
+    --ink-soft: #5b5170;
+    --cream: #fff6ec;
+    --paper: #fff;
+    --grape: #6c4cd6;
+    --grape-dark: #513aa6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #f4eefc; --ink-soft: #b5a9cd; --cream: #191426; --paper: #241d36; --grape: #a48cff; --grape-dark: #8f74ff; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255, 95, 162, 0.16), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(55, 167, 255, 0.16), transparent 42%);
+  }
+  svg { width: min(70vw, 250px); height: auto; margin: 0 auto 8px; display: block; }
+  h1 {
+    font-family: "Comic Sans MS", "Chalkboard SE", "Trebuchet MS", sans-serif;
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    margin: 0 0 10px;
+  }
+  p { color: var(--ink-soft); max-width: 34ch; margin: 0 auto 26px; line-height: 1.55; }
+  a {
+    display: inline-block;
+    min-height: 48px;
+    line-height: 48px;
+    padding: 0 26px;
+    border-radius: 999px;
+    background: var(--grape);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 0 var(--grape-dark);
+  }
+  a:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--grape-dark); }
+  a:focus-visible { outline: 3px solid #ffc531; outline-offset: 3px; }
+</style>
+</head>
+<body>
+  <!-- A confused corgi, drawn here rather than loaded, same as everything else. -->
+  <svg viewBox="0 0 200 150" role="img" aria-label="A corgi looking puzzled">
+    <ellipse cx="100" cy="138" rx="58" ry="8" fill="rgba(36,28,51,0.13)"/>
+    <ellipse cx="70" cy="124" rx="21" ry="13" fill="#fff6ec"/>
+    <ellipse cx="130" cy="124" rx="21" ry="13" fill="#fff6ec"/>
+    <circle cx="62" cy="124" r="3" fill="#e0567a"/>
+    <circle cx="70" cy="128" r="3" fill="#e0567a"/>
+    <circle cx="78" cy="124" r="3" fill="#e0567a"/>
+    <circle cx="122" cy="124" r="3" fill="#e0567a"/>
+    <circle cx="130" cy="128" r="3" fill="#e0567a"/>
+    <circle cx="138" cy="124" r="3" fill="#e0567a"/>
+    <ellipse cx="74" cy="86" rx="36" ry="42" fill="#e8944a"/>
+    <ellipse cx="126" cy="86" rx="36" ry="42" fill="#e8944a"/>
+    <path d="M100 44 q16 24 15 56 q-1 18 -15 25 q-14 -7 -15 -25 q-1 -32 15 -56z" fill="#fff6ec"/>
+    <ellipse cx="100" cy="36" rx="15" ry="21" fill="#f3b877"/>
+    <ellipse cx="100" cy="30" rx="9" ry="13" fill="#fff6ec"/>
+    <text x="154" y="46" font-family="Comic Sans MS, Trebuchet MS, sans-serif"
+          font-size="38" font-weight="700" fill="#6c4cd6">?</text>
+  </svg>
+
+  <h1>Nothing here</h1>
+  <p>That page does not exist. The corgi has no idea either.</p>
+  <a id="home" href="/">Back to the playground</a>
+
+<script>
+  // Same reason as the inline CSS: the address bar is still on the bad URL, so
+  // work the site root out from the first path segment. A project site lives at
+  // /<repo>/, a user site at /.
+  (function () {
+    var parts = location.pathname.split('/').filter(Boolean);
+    document.getElementById('home').setAttribute(
+      'href', parts.length > 1 ? '/' + parts[0] + '/' : '/');
+  })();
+</script>
+</body>
+</html>
