@@ -1,0 +1,33 @@
+.stage { padding: 10px; }
+
+#canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 800 / 460;
+  border-radius: var(--radius);
+  background: #bfe8ff;
+  cursor: crosshair;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stage.flash::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: var(--radius);
+  background: rgba(255, 95, 95, 0.35);
+  pointer-events: none;
+  animation: flash 380ms ease-out forwards;
+}
+@keyframes flash { to { opacity: 0; } }
+
+kbd {
+  font-family: var(--font);
+  font-size: 0.8em;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 1px 6px;
+}

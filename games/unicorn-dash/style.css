@@ -1,0 +1,50 @@
+.stage { padding: 10px; display: grid; place-items: center; }
+
+#canvas {
+  display: block;
+  width: min(100%, 380px);
+  aspect-ratio: 160 / 240;
+  height: auto;
+  image-rendering: pixelated;
+  border-radius: var(--radius);
+  background: #2a2140;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stage .overlay { font-family: var(--font-display); }
+
+.pads {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 8px;
+  max-width: 380px;
+  margin-inline: auto;
+}
+.pad {
+  min-height: 64px;
+  border-radius: var(--radius);
+  border: 2px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--shadow);
+  touch-action: manipulation;
+}
+.pad:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--shadow); }
+
+kbd {
+  font-family: var(--font);
+  font-size: 0.8em;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+
+/* Keep the frame the same width as the track, or the panel reads as a
+   big white box with a game somewhere in the middle of it. */
+.stage.panel { max-width: 400px; margin-inline: auto; }

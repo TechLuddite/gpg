@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corgi Butt Clicker - Grace's Playground</title>
+<meta name="theme-color" content="#ffc531">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%90%B6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../shared/playground.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <div class="topbar">
+    <a class="back" href="../../">&larr; Playground</a>
+    <h1>Corgi Butt Clicker</h1>
+  </div>
+
+  <div class="scoreboard">
+    <div class="stat"><span class="label">Fluff</span><span class="value" id="fluff">0</span></div>
+    <div class="stat"><span class="label">Per click</span><span class="value" id="per-click">1</span></div>
+    <div class="stat"><span class="label">Per second</span><span class="value" id="per-second">0</span></div>
+  </div>
+
+  <div class="layout">
+    <section class="panel corgi-panel">
+      <div class="corgi-stage">
+        <button class="corgi-button" id="corgi" aria-describedby="corgi-help">
+          <span class="visually-hidden">Pat the corgi to collect fluff</span>
+          <svg viewBox="0 0 260 230" aria-hidden="true">
+            <ellipse cx="130" cy="218" rx="88" ry="11" fill="rgba(36,28,51,0.13)"/>
+
+            <!-- Back paws, behind the haunches so they peek out underneath -->
+            <ellipse cx="68" cy="203" rx="28" ry="18" fill="#fff6ec"/>
+            <ellipse cx="192" cy="203" rx="28" ry="18" fill="#fff6ec"/>
+            <circle cx="56" cy="203" r="4.5" fill="#e0567a"/>
+            <circle cx="68" cy="209" r="4.5" fill="#e0567a"/>
+            <circle cx="80" cy="203" r="4.5" fill="#e0567a"/>
+            <circle cx="180" cy="203" r="4.5" fill="#e0567a"/>
+            <circle cx="192" cy="209" r="4.5" fill="#e0567a"/>
+            <circle cx="204" cy="203" r="4.5" fill="#e0567a"/>
+
+            <!-- The two haunches: the whole point of the game -->
+            <ellipse cx="82" cy="132" rx="56" ry="64" fill="#e8944a"/>
+            <ellipse cx="178" cy="132" rx="56" ry="64" fill="#e8944a"/>
+
+            <!-- Cream stripe down the middle -->
+            <path d="M130 70 q24 34 22 82 q-2 28 -22 38 q-20 -10 -22 -38 q-2 -48 22 -82z" fill="#fff6ec"/>
+
+            <!-- A little fur texture on each cheek -->
+            <path d="M52 112 q12 10 0 20 M46 148 q12 10 0 20" stroke="#d47f38" stroke-width="4"
+                  fill="none" stroke-linecap="round" opacity="0.7"/>
+            <path d="M208 112 q-12 10 0 20 M214 148 q-12 10 0 20" stroke="#d47f38" stroke-width="4"
+                  fill="none" stroke-linecap="round" opacity="0.7"/>
+
+            <!-- Tail, wagging -->
+            <g id="tail" style="transform-origin: 130px 84px">
+              <ellipse cx="130" cy="52" rx="23" ry="32" fill="#f3b877"/>
+              <ellipse cx="130" cy="42" rx="14" ry="20" fill="#fff6ec"/>
+            </g>
+          </svg>
+        </button>
+        <div class="floaters" id="floaters" aria-hidden="true"></div>
+        <button class="zoomie" id="zoomie" hidden>
+          <span class="visually-hidden">Catch the zoomie corgi for a bonus</span>
+          <svg viewBox="0 0 90 60" aria-hidden="true">
+            <ellipse cx="46" cy="34" rx="28" ry="17" fill="#ffc531"/>
+            <circle cx="72" cy="26" r="14" fill="#ffd766"/>
+            <path d="M64 14 l-4 -12 l12 6z" fill="#ffc531"/>
+            <path d="M80 14 l6 -11 l-13 4z" fill="#ffc531"/>
+            <circle cx="76" cy="25" r="2.6" fill="#241c33"/>
+            <ellipse cx="14" cy="30" rx="10" ry="8" fill="#ffd766"/>
+            <path d="M30 50 l0 8 M50 50 l0 8" stroke="#e8a800" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <p class="hint" id="corgi-help">Click, tap or press <kbd>Space</kbd>. Catch the golden corgi when it runs past.</p>
+      <p class="hint" id="lifetime">Pats: 0 &middot; Zoomies caught: 0</p>
+    </section>
+
+    <section class="panel shop" aria-labelledby="shop-heading">
+      <h2 id="shop-heading">Shop</h2>
+      <ul class="upgrades" id="upgrades"></ul>
+      <div class="controls">
+        <button class="btn btn-ghost" id="reset" type="button">Start again</button>
+      </div>
+      <p class="hint">Your fluff is saved on this device only.</p>
+    </section>
+  </div>
+
+  <p class="visually-hidden" role="status" id="announce"></p>
+</main>
+<script type="module" src="game.js"></script>
+</body>
+</html>

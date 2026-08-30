@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Durpy the Tiger Stretch Face - Grace's Playground</title>
+<meta name="theme-color" content="#ff9f1c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%90%AF%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../shared/playground.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <div class="topbar">
+    <a class="back" href="../../">&larr; Playground</a>
+    <h1>Durpy the Tiger</h1>
+  </div>
+
+  <p class="caption" id="caption">Durpy is fine. Nothing is wrong with Durpy.</p>
+
+  <section class="panel face-panel">
+    <svg id="face" viewBox="0 0 400 400" role="application"
+         aria-label="Durpy the tiger. Drag his ears, eyes, nose, mouth and cheeks around his face.">
+      <defs>
+        <clipPath id="head-clip">
+          <ellipse cx="200" cy="212" rx="150" ry="136"/>
+        </clipPath>
+      </defs>
+
+      <!-- Ears sit behind the head so they tuck under when pushed inwards -->
+      <g class="feature" data-feature="ear-left" tabindex="0" role="button" aria-label="Left ear">
+        <path class="coat" d="M104 108 l-24 -70 l86 34z"/>
+        <path class="inner" d="M110 104 l-14 -42 l50 20z"/>
+      </g>
+      <g class="feature" data-feature="ear-right" tabindex="0" role="button" aria-label="Right ear">
+        <path class="coat" d="M296 108 l24 -70 l-86 34z"/>
+        <path class="inner" d="M290 104 l14 -42 l-50 20z"/>
+      </g>
+
+      <!-- Head -->
+      <ellipse class="coat" cx="200" cy="212" rx="150" ry="136"/>
+      <g clip-path="url(#head-clip)">
+        <path class="stripe" d="M200 76 q10 26 0 44 q-10 -18 0 -44z"/>
+        <path class="stripe" d="M118 104 q22 22 26 46 q-30 -12 -26 -46z"/>
+        <path class="stripe" d="M282 104 q-22 22 -26 46 q30 -12 26 -46z"/>
+        <path class="stripe" d="M58 178 q40 4 58 18 q-40 16 -58 -18z"/>
+        <path class="stripe" d="M342 178 q-40 4 -58 18 q40 16 58 -18z"/>
+        <path class="stripe" d="M64 258 q38 -6 56 6 q-38 24 -56 -6z"/>
+        <path class="stripe" d="M336 258 q-38 -6 -56 6 q38 24 56 -6z"/>
+      </g>
+      <ellipse class="belly" cx="200" cy="252" rx="94" ry="72"/>
+
+      <g class="feature" data-feature="cheek-left" tabindex="0" role="button" aria-label="Left cheek">
+        <ellipse cx="124" cy="252" rx="30" ry="20" fill="#ff5fa2" opacity="0.42"/>
+      </g>
+      <g class="feature" data-feature="cheek-right" tabindex="0" role="button" aria-label="Right cheek">
+        <ellipse cx="276" cy="252" rx="30" ry="20" fill="#ff5fa2" opacity="0.42"/>
+      </g>
+
+      <g class="feature" data-feature="eye-left" tabindex="0" role="button" aria-label="Left eye">
+        <ellipse cx="152" cy="186" rx="26" ry="28" fill="#ffffff"/>
+        <circle cx="156" cy="190" r="14" fill="#241c33"/>
+        <circle cx="161" cy="184" r="5" fill="#ffffff"/>
+      </g>
+      <g class="feature" data-feature="eye-right" tabindex="0" role="button" aria-label="Right eye">
+        <ellipse cx="248" cy="186" rx="26" ry="28" fill="#ffffff"/>
+        <circle cx="244" cy="190" r="14" fill="#241c33"/>
+        <circle cx="249" cy="184" r="5" fill="#ffffff"/>
+      </g>
+
+      <g class="feature" data-feature="nose" tabindex="0" role="button" aria-label="Nose">
+        <path d="M200 238 l-20 16 q20 16 40 0z" fill="#e0567a"/>
+        <path d="M148 244 l-42 -12 M148 254 l-42 12 M252 244 l42 -12 M252 254 l42 12"
+              stroke="#241c33" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+      </g>
+
+      <g class="feature" data-feature="mouth" tabindex="0" role="button" aria-label="Mouth">
+        <path d="M200 266 v14 M200 280 q-26 22 -44 2 M200 280 q26 22 44 2"
+              stroke="#241c33" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M200 292 q10 22 24 14 q6 -14 -4 -18z" fill="#e0567a"/>
+      </g>
+    </svg>
+
+    <div class="controls">
+      <button class="btn btn-pink" id="scramble" type="button">Scramble</button>
+      <button class="btn btn-ghost" id="reset" type="button">Snap back</button>
+      <button class="btn btn-ghost" id="sticky" type="button" aria-pressed="false">Sticky: off</button>
+      <button class="btn btn-mint" id="save" type="button">Save photo</button>
+    </div>
+
+    <h2 class="coats-heading">Fur</h2>
+    <div class="swatches" id="coats" role="group" aria-label="Fur colour"></div>
+
+    <p class="hint">Drag a part of his face and let go. With sticky on, it stays where you put it. On a keyboard, tab to a part and use the arrow keys.</p>
+  </section>
+
+  <p class="visually-hidden" role="status" id="announce"></p>
+</main>
+<script type="module" src="game.js"></script>
+</body>
+</html>

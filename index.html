@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grace's Playground</title>
+<meta name="description" content="A little arcade of browser games, from a list of ideas Grace wrote for her birthday.">
+<meta name="theme-color" content="#6c4cd6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%A0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="shared/playground.css">
+<style>
+  .hero {
+    text-align: center;
+    padding: 28px 12px 12px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 9vw, 4rem);
+    margin: 0 0 8px;
+    background: linear-gradient(96deg, var(--bubble), var(--grape) 45%, var(--sky));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p { margin: 0 auto; max-width: 46ch; color: var(--ink-soft); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin: 28px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 0 16px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--line);
+    background: var(--paper);
+    box-shadow: 0 8px 0 var(--shadow);
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .card:hover, .card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 var(--shadow);
+  }
+  .card .thumb {
+    display: block;
+    width: 100%;
+    height: 140px;
+    background: var(--tint, var(--grape));
+    background-image: linear-gradient(160deg, rgba(255,255,255,0.34), rgba(255,255,255,0));
+  }
+  .card h2 { font-size: 1.15rem; margin: 14px 16px 6px; }
+  .card p { margin: 0 16px; font-size: 0.92rem; color: var(--ink-soft); flex: 1 1 auto; }
+  .card .play {
+    align-self: flex-start;
+    margin: 14px 16px 0;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--cream);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .colophon { margin-top: 36px; color: var(--ink-soft); font-size: 0.92rem; }
+  .colophon h2 { font-size: 1.1rem; color: var(--ink); }
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="hero">
+    <h1>Grace's Playground</h1>
+    <p>Seven small games, one for each idea on Grace's birthday list. They all run in the browser, they all work on a phone, and none of them need the internet once the page has loaded.</p>
+  </header>
+
+  <ul class="grid" id="grid"></ul>
+
+  <section class="panel colophon">
+    <h2>About the playground</h2>
+    <p>Every drawing here is code. There are no downloaded images, no fonts to fetch and no tracking, so the whole thing is a folder of plain HTML, CSS and JavaScript that will still open in twenty years.</p>
+    <p>Scores are kept on your own device and go no further. Clearing your browser data clears them.</p>
+  </section>
+</main>
+
+<script type="module">
+  import { games } from './shared/games.js';
+
+  const grid = document.getElementById('grid');
+  grid.innerHTML = games.map((game) => `
+    <li>
+      <a class="card" href="games/${game.slug}/" style="--tint:${game.tint}">
+        <svg class="thumb" viewBox="0 0 200 140" role="img" aria-label="${game.short}">${game.art}</svg>
+        <h2>${game.title}</h2>
+        <p>${game.blurb}</p>
+        <span class="play">Play</span>
+      </a>
+    </li>
+  `).join('');
+</script>
+</body>
+</html>

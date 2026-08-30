@@ -1,0 +1,82 @@
+.levels { display: flex; gap: 8px; flex-wrap: wrap; }
+.levels .btn[aria-pressed="true"] {
+  background: var(--grape);
+  color: #fff;
+  border-color: var(--grape);
+}
+
+.board {
+  /* Without a cap the cards balloon on a wide screen and the board stops
+     reading as a set of cards. */
+  max-width: min(100%, calc(var(--columns, 4) * 138px));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 4), minmax(0, 1fr));
+  gap: 10px;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 900px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.card-inner {
+  position: absolute;
+  inset: 0;
+  transition: transform 340ms cubic-bezier(0.32, 0.8, 0.42, 1);
+  transform-style: preserve-3d;
+}
+.card.up .card-inner { transform: rotateY(180deg); }
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 0 var(--shadow);
+  overflow: hidden;
+}
+
+.face-back {
+  background: linear-gradient(150deg, var(--grape), var(--sky));
+}
+.face-back::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 10px;
+  border: 3px dashed rgba(255, 255, 255, 0.55);
+}
+.face-back svg { width: 44%; height: auto; opacity: 0.95; }
+
+.face-front {
+  background: var(--paper);
+  border: 3px solid var(--line);
+  transform: rotateY(180deg);
+}
+.face-front svg { width: 88%; height: auto; }
+
+.card.matched .card-inner { animation: pop 420ms ease; }
+.card.matched .face-front { border-color: var(--mint); background: color-mix(in srgb, var(--mint) 14%, var(--paper)); }
+.card.matched { cursor: default; }
+
+@keyframes pop {
+  0%, 100% { transform: rotateY(180deg) scale(1); }
+  45%      { transform: rotateY(180deg) scale(1.09); }
+}
+
+.card.wrong .face-front { animation: shake 340ms ease; border-color: var(--bubble); }
+@keyframes shake {
+  0%, 100% { translate: 0; }
+  25% { translate: -5px; }
+  75% { translate: 5px; }
+}

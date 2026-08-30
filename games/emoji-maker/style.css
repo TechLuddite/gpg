@@ -1,0 +1,106 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 780px) { .layout { grid-template-columns: 1fr; } }
+
+.preview-panel { text-align: center; position: sticky; top: 12px; }
+.preview-frame {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  padding: 10px;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #e9e4f2 25%, transparent 25%),
+    linear-gradient(-45deg, #e9e4f2 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e9e4f2 75%),
+    linear-gradient(-45deg, transparent 75%, #e9e4f2 75%);
+  background-size: 18px 18px;
+  background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+}
+#preview { width: min(100%, 280px); height: auto; }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.tab {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--paper);
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tab[aria-selected="true"] { background: var(--grape); color: #fff; border-color: var(--grape); }
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 10px;
+}
+.option {
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  padding: 6px;
+  cursor: pointer;
+  aspect-ratio: 1;
+}
+.option svg { width: 100%; height: 100%; display: block; }
+.option[aria-pressed="true"] { border-color: var(--grape); box-shadow: 0 0 0 3px color-mix(in srgb, var(--grape) 28%, transparent); }
+
+.picker h3 { margin: 18px 0 8px; font-size: 1rem; }
+
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+.swatch {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  cursor: pointer;
+  padding: 0;
+}
+.swatch[aria-pressed="true"] { border-color: var(--ink); transform: scale(1.12); }
+.swatch.transparent {
+  background-image:
+    linear-gradient(45deg, #ccc 25%, #fff 25%, #fff 75%, #ccc 75%),
+    linear-gradient(45deg, #ccc 25%, #fff 25%, #fff 75%, #ccc 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
+}
+
+.book { margin-top: 18px; }
+.sticker-grid {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 10px;
+}
+.sticker { position: relative; }
+.sticker button.load {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  cursor: pointer;
+  padding: 4px;
+}
+.sticker button.load svg { width: 100%; height: 100%; }
+.sticker button.remove {
+  position: absolute;
+  top: -6px; right: -6px;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bubble);
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}

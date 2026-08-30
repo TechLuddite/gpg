@@ -1,0 +1,225 @@
+/* Grace's Playground - shared look and feel.
+   Every game page links this file, then adds its own stylesheet on top. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Palette */
+  --ink: #241c33;
+  --ink-soft: #5b5170;
+  --cream: #fff6ec;
+  --paper: #ffffff;
+  --grape: #6c4cd6;
+  --grape-dark: #513aa6;
+  --bubble: #ff5fa2;
+  --mint: #17b795;
+  --sun: #ffc531;
+  --sky: #37a7ff;
+  --shadow: rgba(36, 28, 51, 0.18);
+  --line: rgba(36, 28, 51, 0.12);
+
+  /* Shape */
+  --radius: 18px;
+  --radius-lg: 28px;
+  --tap: 48px;
+
+  --font: "Trebuchet MS", "Segoe UI", Verdana, system-ui, sans-serif;
+  --font-display: "Comic Sans MS", "Chalkboard SE", "Trebuchet MS", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f4eefc;
+    --ink-soft: #b5a9cd;
+    --cream: #191426;
+    --paper: #241d36;
+    --grape: #a48cff;
+    --grape-dark: #8f74ff;
+    --shadow: rgba(0, 0, 0, 0.45);
+    --line: rgba(255, 255, 255, 0.14);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--cream);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 95, 162, 0.16), transparent 42%),
+    radial-gradient(circle at 88% 12%, rgba(55, 167, 255, 0.16), transparent 40%),
+    radial-gradient(circle at 50% 96%, rgba(23, 183, 149, 0.14), transparent 45%);
+  background-attachment: fixed;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0 0 0.4em; }
+p { line-height: 1.55; }
+
+a { color: var(--grape); }
+
+/* ---------- Page shell ---------- */
+
+.shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.topbar h1 { margin: 0; font-size: clamp(1.4rem, 4vw, 2rem); }
+.topbar .spacer { flex: 1 1 auto; }
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 3px 0 var(--shadow);
+}
+.back:hover { border-color: var(--grape); color: var(--grape); }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  min-height: var(--tap);
+  padding: 0 22px;
+  border: none;
+  border-radius: 999px;
+  background: var(--grape);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--grape-dark);
+  transition: transform 90ms ease, box-shadow 90ms ease;
+  touch-action: manipulation;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--grape-dark); }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; box-shadow: 0 4px 0 var(--grape-dark); transform: none; }
+
+.btn-pink { background: var(--bubble); box-shadow: 0 4px 0 #d43b7e; }
+.btn-pink:active { box-shadow: 0 1px 0 #d43b7e; }
+.btn-mint { background: var(--mint); box-shadow: 0 4px 0 #0d8d72; }
+.btn-mint:active { box-shadow: 0 1px 0 #0d8d72; }
+.btn-ghost {
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  box-shadow: 0 3px 0 var(--shadow);
+}
+.btn-ghost:active { box-shadow: 0 1px 0 var(--shadow); }
+
+:where(button, a, [tabindex]):focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+/* ---------- Cards and panels ---------- */
+
+.panel {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--line);
+  box-shadow: 0 8px 0 var(--shadow);
+  padding: 18px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 14px 0;
+}
+
+/* ---------- Scoreboard ---------- */
+
+.scoreboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.stat {
+  flex: 1 1 120px;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  box-shadow: 0 4px 0 var(--shadow);
+}
+.stat .label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+.stat .value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Overlay used by the arcade games ---------- */
+
+.stage { position: relative; }
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 14px;
+  justify-items: center;
+  text-align: center;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+.overlay[hidden] { display: none; }
+.overlay h2 { font-size: clamp(1.5rem, 6vw, 2.4rem); margin: 0; }
+.overlay p { margin: 0; max-width: 34ch; color: var(--ink-soft); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.hint { color: var(--ink-soft); font-size: 0.9rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
