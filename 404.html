@@ -89,13 +89,17 @@
 
 <script>
   // Same reason as the inline CSS: the address bar is still on the bad URL, so
-  // work the site root out from the first path segment. A project site lives at
-  // /<repo>/, a user site at /.
-  (function () {
-    var parts = location.pathname.split('/').filter(Boolean);
-    document.getElementById('home').setAttribute(
-      'href', parts.length > 1 ? '/' + parts[0] + '/' : '/');
-  })();
+  // the site root has to be worked out from the path. Every page below the root
+  // lives under games/, so whatever comes before that segment is the prefix the
+  // site is served from: nothing at a domain root, /<repo>/ on a github.io
+  // project site. This runs in the page, and siteRoot is also called directly
+  // by test/site.test.js.
+  function siteRoot(pathname) {
+    var parts = pathname.split('/').filter(Boolean);
+    var i = parts.indexOf('games');
+    return i > 0 ? '/' + parts.slice(0, i).join('/') + '/' : '/';
+  }
+  document.getElementById('home').setAttribute('href', siteRoot(location.pathname));
 </script>
 </body>
 </html>

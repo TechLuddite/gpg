@@ -15,12 +15,17 @@ const PHOTO_KEY = 'stretchamabobber:photo';
 const PICTURE_SIZE = 1024;
 
 /**
- * The bundled picture, if there is one. Drop a file called picture.png (or
- * picture.jpg) into this folder and it becomes the default for everybody; a
- * picture picked on the device wins over it.
+ * The bundled picture, if there is one, as a filename in this folder.
+ *
+ * Null means the game asks for a picture instead, which is the state the
+ * repository ships in. To give everybody a default, commit the image next to
+ * this file and put its name here. It is a constant rather than a probe
+ * because a static site cannot ask whether a file exists without fetching it,
+ * and a fetch that misses logs a 404 in every visitor's console.
+ *
+ * A picture picked on the device always wins over this one.
  */
-const BUNDLED = ['picture.png', 'picture.jpg']
-  .map((name) => new URL(name, import.meta.url).href);
+const BUNDLED_PICTURE = null;
 
 const canvas = $('#face');
 const els = {
@@ -327,16 +332,14 @@ function showEmpty() {
   setText(els.caption, 'Nothing to stretch yet.');
 }
 
-/** The first bundled picture that exists, or null if there is none. */
+/** The bundled picture, or null if none is committed or it will not load. */
 async function loadBundled() {
-  for (const src of BUNDLED) {
-    try {
-      return await loadImage(src);
-    } catch {
-      // Try the next name.
-    }
+  if (!BUNDLED_PICTURE) return null;
+  try {
+    return await loadImage(new URL(BUNDLED_PICTURE, import.meta.url).href);
+  } catch {
+    return null;
   }
-  return null;
 }
 
 async function loadStartingPicture() {

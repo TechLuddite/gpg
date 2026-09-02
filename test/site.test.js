@@ -124,6 +124,25 @@ test('the 404 page is self contained', () => {
   assert.doesNotMatch(html, /<link rel="stylesheet"/, '404.html must inline its own styles');
 });
 
+test('the 404 page links home correctly at a domain root and under a subpath', () => {
+  // The address bar stays on the URL that was asked for, so this link is the
+  // one thing on the page that cannot be a fixed relative path. Pull the real
+  // function out of the inline script and run it.
+  const html = readFileSync(join(root, '404.html'), 'utf8');
+  const source = html.match(/function siteRoot\(pathname\) \{[\s\S]*?\n  \}/);
+  assert.ok(source, '404.html still defines siteRoot');
+  const siteRoot = new Function(`${source[0]}; return siteRoot;`)();
+
+  // Custom domain, served from the root.
+  assert.equal(siteRoot('/games/typo/'), '/');
+  assert.equal(siteRoot('/games/'), '/');
+  assert.equal(siteRoot('/typo'), '/');
+  assert.equal(siteRoot('/'), '/');
+  // github.io project site, served from /<repo>/.
+  assert.equal(siteRoot('/gpg/games/typo/'), '/gpg/');
+  assert.equal(siteRoot('/gpg/games/stretchamabobber/typo'), '/gpg/');
+});
+
 test('.nojekyll is present so GitHub Pages serves the files as they are', () => {
   assert.ok(existsSync(join(root, '.nojekyll')));
 });
