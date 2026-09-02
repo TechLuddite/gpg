@@ -1,5 +1,5 @@
 /**
- * Durpy the Tiger Stretch Face - the maths behind the stretching.
+ * Stretchamabobber - the maths behind the stretching.
  *
  * The photo is a rubber sheet pinned at its edges. Grabbing it anywhere puts
  * a "pull" on the sheet: every point nearby moves with the finger, and the
@@ -30,7 +30,7 @@ export const EDGE_MARGIN = 0.1;
 export const MAX_PULLS = 24;
 
 /**
- * Fur colours are applied to the photo itself, so each is a hue turn plus a
+ * Colours are applied to the picture itself, so each is a hue turn plus a
  * saturation and brightness tweak rather than a set of paint colours.
  */
 export const COATS = [
@@ -179,12 +179,12 @@ export function silliness(pulls) {
 }
 
 const CAPTIONS = [
-  { at: 0.02, text: 'Durpy is fine. Nothing is wrong with Durpy.' },
-  { at: 0.12, text: 'Durpy looks slightly concerned.' },
-  { at: 0.28, text: 'Durpy has questions.' },
-  { at: 0.48, text: 'Durpy is no longer a normal tiger.' },
-  { at: 0.7, text: 'Durpy has left the building.' },
-  { at: 0.9, text: 'This is the durpiest Durpy has ever been.' },
+  { at: 0.02, text: 'Perfectly normal. Nothing to see here.' },
+  { at: 0.12, text: 'Something is not quite right.' },
+  { at: 0.28, text: 'That face has questions.' },
+  { at: 0.48, text: 'That is no longer a normal face.' },
+  { at: 0.7, text: 'It has left the building.' },
+  { at: 0.9, text: 'This is the stretchiest it has ever been.' },
 ];
 
 export function captionFor(pulls) {

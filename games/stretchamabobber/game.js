@@ -6,20 +6,20 @@ import {
   captionFor, isPull,
 } from './logic.js';
 
-const COAT_KEY = 'durpy-stretch:coat';
-const STICKY_KEY = 'durpy-stretch:sticky';
-const POSE_KEY = 'durpy-stretch:pose';
-const PHOTO_KEY = 'durpy-stretch:photo';
+const COAT_KEY = 'stretchamabobber:coat';
+const STICKY_KEY = 'stretchamabobber:sticky';
+const POSE_KEY = 'stretchamabobber:pose';
+const PHOTO_KEY = 'stretchamabobber:photo';
 
 /** Every picture is squared off to this size before it becomes a texture. */
 const PICTURE_SIZE = 1024;
 
 /**
- * The bundled picture, if there is one. Drop a file called derpy.png (or
- * derpy.jpg) into this folder and it becomes the default for everybody; a
+ * The bundled picture, if there is one. Drop a file called picture.png (or
+ * picture.jpg) into this folder and it becomes the default for everybody; a
  * picture picked on the device wins over it.
  */
-const BUNDLED = ['derpy.png', 'derpy.jpg']
+const BUNDLED = ['picture.png', 'picture.jpg']
   .map((name) => new URL(name, import.meta.url).href);
 
 const canvas = $('#face');
@@ -324,7 +324,7 @@ function showEmpty() {
   els.empty.hidden = false;
   els.forget.hidden = true;
   els.stage.classList.remove('busy');
-  setText(els.caption, 'Durpy is not here yet.');
+  setText(els.caption, 'Nothing to stretch yet.');
 }
 
 /** The first bundled picture that exists, or null if there is none. */
@@ -459,7 +459,7 @@ $('#reset').addEventListener('click', () => {
   persistPose();
   springing = null;
   render();
-  els.announce.textContent = 'Durpy is back to normal.';
+  els.announce.textContent = 'Back to normal.';
 });
 
 function renderSticky() {
@@ -476,15 +476,15 @@ els.sticky.addEventListener('click', () => {
 $('#save').addEventListener('click', () => {
   if (!picture) return;
   render();
-  downloadCanvasAsPng(canvas, 'durpy.png');
-  els.announce.textContent = 'Saving a photo of Durpy.';
+  downloadCanvasAsPng(canvas, 'stretchamabobber.png');
+  els.announce.textContent = 'Saving the picture.';
 });
 
 function renderCoats() {
   els.coats.innerHTML = COATS.map((c) => `
     <button class="swatch" type="button" data-id="${c.id}"
             style="background:${c.swatch}"
-            aria-pressed="${c.id === coat.id}" aria-label="${c.name} fur"></button>
+            aria-pressed="${c.id === coat.id}" aria-label="${c.name}"></button>
   `).join('');
   $$('.swatch', els.coats).forEach((button) => {
     button.addEventListener('click', () => {
@@ -509,7 +509,7 @@ els.forget.addEventListener('click', async () => {
   const bundled = await loadBundled();
   if (bundled) usePicture(bundled);
   else showEmpty();
-  els.announce.textContent = 'Back to the usual Durpy.';
+  els.announce.textContent = 'Starting again.';
 });
 
 // Dropping a picture onto the page works too.

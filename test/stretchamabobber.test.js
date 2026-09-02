@@ -4,7 +4,7 @@ import {
   MESH, PULL_RADIUS, MAX_STRETCH, EDGE_MARGIN, MAX_PULLS, COATS, coatById,
   clampStretch, makePull, falloff, edgeWeight, displace, buildMesh, warpMesh,
   addPull, randomPulls, silliness, captionFor, isPull,
-} from '../games/durpy-stretch/logic.js';
+} from '../games/stretchamabobber/logic.js';
 
 test('every coat has a swatch colour and sensible adjustments', () => {
   const ids = new Set(COATS.map((c) => c.id));

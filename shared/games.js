@@ -119,22 +119,20 @@ export const games = [
     `,
   },
   {
-    slug: 'durpy-stretch',
-    title: 'Durpy the Tiger Stretch Face',
-    short: 'Durpy Stretch',
-    blurb: 'Stretch his face like rubber. Let go and it springs back. Save a photo.',
+    slug: 'stretchamabobber',
+    title: 'Stretchamabobber',
+    short: 'Stretchamabobber',
+    blurb: 'Stretch a picture like rubber. Let go and it springs back. Save a photo.',
     tint: '#ff9f1c',
     art: `
-      <ellipse cx="100" cy="70" rx="44" ry="40" fill="#ff9f1c"/>
-      <path d="M64 42 l-8 -18 l24 8z" fill="#ff9f1c"/>
-      <path d="M136 42 l8 -18 l-24 8z" fill="#ff9f1c"/>
-      <path d="M78 38 q6 16 0 26" stroke="#241c33" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <path d="M122 38 q-6 16 0 26" stroke="#241c33" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="100" cy="82" rx="26" ry="20" fill="#fff6ec"/>
-      <circle cx="84" cy="62" r="6" fill="#241c33"/>
-      <circle cx="116" cy="62" r="6" fill="#241c33"/>
-      <path d="M100 76 l-7 6 h14z" fill="#e0567a"/>
-      <path d="M100 82 v6 M100 88 q-8 6 -14 0 M100 88 q8 6 14 0" stroke="#241c33" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M92 24 C132 24 156 42 162 58 L194 68 C158 82 146 116 92 116 C42 116 24 96 24 70 C24 44 44 24 92 24z" fill="#ff9f1c"/>
+      <path d="M92 34 C124 34 146 48 151 61 L176 68 C147 79 138 106 92 106 C50 106 34 91 34 70 C34 49 52 34 92 34z" fill="#fff6ec" opacity="0.5"/>
+      <circle cx="70" cy="60" r="9" fill="#241c33"/>
+      <ellipse cx="124" cy="63" rx="19" ry="8" fill="#241c33"/>
+      <circle cx="67" cy="57" r="3" fill="#ffffff"/>
+      <path d="M58 86 q40 24 88 -4" stroke="#241c33" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <circle cx="192" cy="68" r="9" fill="#ffffff" stroke="#241c33" stroke-width="3"/>
+      <path d="M150 44 l22 -8 M152 92 l22 8" stroke="#241c33" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.5"/>
     `,
   },
 ];

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Durpy the Tiger Stretch Face - Grace's Playground</title>
+<title>Stretchamabobber - Grace's Playground</title>
 <meta name="theme-color" content="#ff9f1c">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%90%AF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%AB%A0%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../../shared/playground.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,18 +13,18 @@
 <main class="shell">
   <div class="topbar">
     <a class="back" href="../../">&larr; Playground</a>
-    <h1>Durpy the Tiger</h1>
+    <h1>Stretchamabobber</h1>
   </div>
 
-  <p class="caption" id="caption">Durpy is fine. Nothing is wrong with Durpy.</p>
+  <p class="caption" id="caption">Perfectly normal. Nothing to see here.</p>
 
   <section class="panel face-panel">
     <div class="stage" id="stage">
       <canvas id="face" width="1024" height="1024" role="img"
-              aria-label="Durpy. Press and drag anywhere on the picture to stretch it."></canvas>
+              aria-label="The picture being stretched. Press and drag anywhere on it to pull it about."></canvas>
       <div class="empty" id="empty" hidden>
-        <p class="empty-title">Durpy needs a picture</p>
-        <p>Pick a picture of Durpy from this device and it stays here for next time.</p>
+        <p class="empty-title">Pick a picture</p>
+        <p>Any picture on this device will do. It stays here for next time.</p>
         <button class="btn btn-pink" id="pick-empty" type="button">Pick a picture</button>
       </div>
     </div>
@@ -36,16 +36,16 @@
       <button class="btn btn-mint" id="save" type="button">Save photo</button>
     </div>
 
-    <h2 class="coats-heading">Fur</h2>
-    <div class="swatches" id="coats" role="group" aria-label="Fur colour"></div>
+    <h2 class="coats-heading">Colour</h2>
+    <div class="swatches" id="coats" role="group" aria-label="Colour"></div>
 
     <div class="photo-row">
       <button class="btn btn-ghost" id="pick" type="button">Pick a picture</button>
-      <button class="btn btn-ghost" id="forget" type="button" hidden>Back to Durpy</button>
+      <button class="btn btn-ghost" id="forget" type="button" hidden>Start again</button>
       <input id="file" type="file" accept="image/*" hidden>
     </div>
 
-    <p class="hint">Press anywhere on Durpy and drag. Let go and he springs back. With sticky on, the stretch stays and you can add more. Pull his cheeks apart, then save the photo.</p>
+    <p class="hint">Press anywhere on the picture and drag. Let go and it springs back. With sticky on, the stretch stays and you can add more. Pull the cheeks apart, then save the photo.</p>
   </section>
 
   <p class="visually-hidden" role="status" id="announce"></p>
