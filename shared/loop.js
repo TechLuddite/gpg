@@ -37,12 +37,3 @@ export function createLoop(step, render) {
   };
 }
 
-/** Pauses a loop when the tab is hidden, and resumes only if it was running. */
-export function pauseWhenHidden(loop, onPause) {
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && loop.running) {
-      loop.stop();
-      if (onPause) onPause();
-    }
-  });
-}

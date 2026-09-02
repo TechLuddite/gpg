@@ -2,8 +2,10 @@
  * The one list of games. The landing page renders from this, so adding a game
  * means adding a folder and one entry here.
  *
- * `art` is an inline SVG string. Nothing in this repository loads an external
- * image, which keeps the licensing question closed: every drawing is code.
+ * `art` is an inline SVG string, drawn by hand. No thumbnail may reference an
+ * image file or another domain, which keeps the licensing question closed for
+ * the landing page; `test/shared.test.js` enforces it. The only picture the
+ * site ever shows is the one a player hands to Stretchamabobber.
  */
 
 export const games = [
