@@ -122,7 +122,7 @@ export const games = [
     slug: 'durpy-stretch',
     title: 'Durpy the Tiger Stretch Face',
     short: 'Durpy Stretch',
-    blurb: 'Pull his face around. Let go and it springs back. Save a photo.',
+    blurb: 'Stretch his face like rubber. Let go and it springs back. Save a photo.',
     tint: '#ff9f1c',
     art: `
       <ellipse cx="100" cy="70" rx="44" ry="40" fill="#ff9f1c"/>

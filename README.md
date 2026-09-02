@@ -16,7 +16,7 @@ server, which is what makes them a good fit for GitHub Pages.
 | [Emoji Maker](games/emoji-maker/) | Build a face out of parts and save it to a sticker book. |
 | [Unicorn Dash](games/unicorn-dash/) | An 8-bit three lane runner. Dodge rocks, collect stars. |
 | [Catwalk Contest](games/catwalk-contest/) | Five rounds, five themes, one outfit each. |
-| [Durpy the Tiger Stretch Face](games/durpy-stretch/) | Drag his face about and take a photo of the result. |
+| [Durpy the Tiger Stretch Face](games/durpy-stretch/) | Grab his face anywhere and stretch it like rubber. Take a photo of the result. |
 
 ## The names
 
@@ -33,13 +33,37 @@ public:
 
 These are placeholders. Grace picks the real ones.
 
-"Durpy" is Grace's spelling and stays exactly as she wrote it.
+"Durpy" is Grace's spelling and stays exactly as she wrote it. Derpy Tiger is a
+character from the Netflix film *KPop Demon Hunters*, so no picture of him is
+in this repository: see [Durpy's picture](#durpys-picture) below.
 
 ## Artwork
 
 Every drawing in this repository is code: SVG paths and canvas calls written by
 hand. Nothing is downloaded, traced or embedded from anywhere else, so there is
 no licence to track and no attribution file to keep up to date.
+
+The one exception is Durpy, who is a picture rather than a drawing.
+
+### Durpy's picture
+
+The stretch game warps a real image, and the repository does not ship one,
+because the real Derpy belongs to Netflix. There are two ways to give the game
+his picture:
+
+1. **On the device.** Press *Pick a picture* in the game (or drop an image on
+   the page) and choose any picture saved on that phone or tablet. It is
+   squared off, kept in the browser's storage, and comes back next time. This
+   is the quickest route and puts nothing in the repository.
+2. **In the repository.** Save the picture as
+   `games/durpy-stretch/derpy.png` (or `.jpg`) and commit it. It becomes the
+   default for everyone who opens the game. Whether a picture of a Netflix
+   character belongs in a public repository is a decision for whoever owns
+   the repository, which is why this step is a manual one.
+
+Until one of those happens the game shows a *Durpy needs a picture* panel with
+the pick button on it. A picture chosen on the device always wins over the
+bundled one, and *Back to Durpy* forgets it again.
 
 That also leaves an obvious upgrade path. Grace's own drawings can replace any
 of it a piece at a time, because each game keeps its art in one place:
@@ -48,7 +72,7 @@ of it a piece at a time, because each game keeps its art in one place:
 - `games/puppy-match/puppy-art.js` for the twelve puppies
 - `games/emoji-maker/parts.js` for every emoji part
 - `games/catwalk-contest/wardrobe.js` for every garment
-- `games/durpy-stretch/index.html` for Durpy himself
+- `games/durpy-stretch/derpy.png` for Durpy himself, once there is one
 - the `draw*` functions in `games/cat-and-chickens/game.js` and
   `games/unicorn-dash/game.js` for the two canvas games
 
@@ -94,7 +118,7 @@ modules and browsers refuse to load those over `file://`.
 npm test        # node --test, no install required
 ```
 
-111 tests covering the game rules, the shared helpers, and the structure of the
+124 tests covering the game rules, the shared helpers, and the structure of the
 site itself: that every link resolves, that every import resolves, that no page
 loads anything from another domain, and that every game folder is in the
 manifest.
@@ -125,8 +149,9 @@ stylesheet link in it would 404 in turn and the page would arrive unstyled.
   on the device that set it, and clearing browser data clears it.
 - **Sound.** Easy to add, and worth adding once somebody has decided what these
   should sound like.
-- **A real mesh warp for Durpy.** He moves whole features rather than stretching
-  the drawing itself. A proper warp is a much larger job for a small gain.
+- **A picture of Durpy.** See [Durpy's picture](#durpys-picture). The warp
+  itself is done: a WebGL mesh with a 2D canvas fallback, pinned at the edges
+  so the picture always fills its frame.
 
 ## Licence
 

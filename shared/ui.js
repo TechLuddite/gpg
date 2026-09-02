@@ -34,6 +34,21 @@ export function pointerPos(event, el) {
   return { x: event.clientX - rect.left, y: event.clientY - rect.top };
 }
 
+/** Offers a canvas as a PNG file to save. */
+export function downloadCanvasAsPng(canvas, filename) {
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const href = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = href;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(href), 1000);
+  }, 'image/png');
+}
+
 /** Turns an inline <svg> into a PNG download. No external refs allowed. */
 export function downloadSvgAsPng(svg, filename, scale = 2) {
   const clone = svg.cloneNode(true);
@@ -53,16 +68,7 @@ export function downloadSvgAsPng(svg, filename, scale = 2) {
     canvas.height = h * scale;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    canvas.toBlob((blob) => {
-      const href = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = href;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(href), 1000);
-    }, 'image/png');
+    downloadCanvasAsPng(canvas, filename);
   };
   img.src = url;
 }
