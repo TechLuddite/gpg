@@ -40,6 +40,7 @@ export const games = [
       <ellipse cx="72" cy="74" rx="34" ry="40" fill="#e8944a"/>
       <ellipse cx="128" cy="74" rx="34" ry="40" fill="#e8944a"/>
       <path d="M100 34 q15 22 14 52 q-1 17 -14 24 q-13 -7 -14 -24 q-1 -30 14 -52z" fill="#fff6ec"/>
+      <path d="M95 50 l10 10 M105 50 l-10 10" stroke="#b9773f" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
       <ellipse cx="100" cy="26" rx="14" ry="20" fill="#f3b877"/>
       <ellipse cx="100" cy="20" rx="8" ry="12" fill="#fff6ec"/>
       <circle cx="62" cy="110" r="3" fill="#e0567a"/><circle cx="70" cy="114" r="3" fill="#e0567a"/>
